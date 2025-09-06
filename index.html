@@ -29,6 +29,7 @@
                 <li><a href="#functions" class="nav-link">Functions</a></li>
                 <li><a href="#arrays" class="nav-link">Arrays & Strings</a></li>
                 <li><a href="#oop" class="nav-link">Object-Oriented Programming</a></li>
+                <li><a href="#references" class="nav-link">Call by Reference</a></li>
                 <li><a href="#practice" class="nav-link">Practice</a></li>
             </ul>
         </nav>
@@ -320,6 +321,249 @@ int main() {
 }</code></pre>
                         <button class="run-code" onclick="runCode(this)">Run Code</button>
                         <div class="output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call by Reference Section -->
+            <section id="references" class="lesson">
+                <h2>Call by Reference</h2>
+                <div class="lesson-content">
+                    <p>Call by reference is a method of passing arguments to a function where the function receives a reference to the original variable instead of a copy. This allows the function to modify the original variable directly.</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-link"></i> Key Concepts</h3>
+                        <ul>
+                            <li><strong>Reference</strong> - An alias for an existing variable</li>
+                            <li><strong>Memory Efficiency</strong> - No copying of large objects</li>
+                            <li><strong>Direct Modification</strong> - Changes affect the original variable</li>
+                            <li><strong>Syntax</strong> - Use & symbol in function parameters</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Basic Call by Reference</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function with reference parameter
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    
+    cout &lt;&lt; "Before swap: x = " &lt;&lt; x &lt;&lt; ", y = " &lt;&lt; y &lt;&lt; endl;
+    
+    swap(x, y);  // Call by reference
+    
+    cout &lt;&lt; "After swap: x = " &lt;&lt; x &lt;&lt; ", y = " &lt;&lt; y &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Call by Value vs Call by Reference</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Call by value - creates a copy
+void modifyByValue(int num) {
+    num = 100;
+    cout &lt;&lt; "Inside modifyByValue: " &lt;&lt; num &lt;&lt; endl;
+}
+
+// Call by reference - modifies original
+void modifyByReference(int &num) {
+    num = 100;
+    cout &lt;&lt; "Inside modifyByReference: " &lt;&lt; num &lt;&lt; endl;
+}
+
+int main() {
+    int value = 50;
+    
+    cout &lt;&lt; "Original value: " &lt;&lt; value &lt;&lt; endl;
+    
+    modifyByValue(value);
+    cout &lt;&lt; "After call by value: " &lt;&lt; value &lt;&lt; endl;
+    
+    modifyByReference(value);
+    cout &lt;&lt; "After call by reference: " &lt;&lt; value &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Reference with Arrays</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function to modify array elements
+void modifyArray(int arr[], int size) {
+    for (int i = 0; i &lt; size; i++) {
+        arr[i] *= 2;  // Double each element
+    }
+}
+
+// Function to print array
+void printArray(int arr[], int size) {
+    cout &lt;&lt; "Array elements: ";
+    for (int i = 0; i &lt; size; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+}
+
+int main() {
+    int numbers[] = {1, 2, 3, 4, 5};
+    int size = 5;
+    
+    cout &lt;&lt; "Original array:" &lt;&lt; endl;
+    printArray(numbers, size);
+    
+    modifyArray(numbers, size);
+    
+    cout &lt;&lt; "After modification:" &lt;&lt; endl;
+    printArray(numbers, size);
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Multiple Return Values using References</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+// Function that returns multiple values using references
+void calculateCircle(double radius, double &area, double &circumference) {
+    area = 3.14159 * radius * radius;
+    circumference = 2 * 3.14159 * radius;
+}
+
+// Function to find min and max of array
+void findMinMax(int arr[], int size, int &min, int &max) {
+    min = max = arr[0];
+    for (int i = 1; i &lt; size; i++) {
+        if (arr[i] &lt; min) min = arr[i];
+        if (arr[i] &gt; max) max = arr[i];
+    }
+}
+
+int main() {
+    // Example 1: Circle calculations
+    double radius = 5.0;
+    double area, circumference;
+    
+    calculateCircle(radius, area, circumference);
+    cout &lt;&lt; "Circle with radius " &lt;&lt; radius &lt;&lt; ":" &lt;&lt; endl;
+    cout &lt;&lt; "Area: " &lt;&lt; area &lt;&lt; endl;
+    cout &lt;&lt; "Circumference: " &lt;&lt; circumference &lt;&lt; endl;
+    
+    // Example 2: Min and max of array
+    int numbers[] = {45, 12, 78, 23, 56, 89, 34};
+    int size = 7;
+    int minVal, maxVal;
+    
+    findMinMax(numbers, size, minVal, maxVal);
+    cout &lt;&lt; "\nArray: ";
+    for (int i = 0; i &lt; size; i++) {
+        cout &lt;&lt; numbers[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    cout &lt;&lt; "Minimum: " &lt;&lt; minVal &lt;&lt; ", Maximum: " &lt;&lt; maxVal &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Important Notes</h3>
+                        <ul>
+                            <li><strong>References must be initialized</strong> when declared</li>
+                            <li><strong>References cannot be reassigned</strong> to refer to another variable</li>
+                            <li><strong>No null references</strong> - references must always refer to a valid object</li>
+                            <li><strong>Memory efficient</strong> - no copying of large objects</li>
+                            <li><strong>Use const references</strong> when you don't need to modify the value</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Const References for Read-Only Access</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// Function that doesn't modify the parameter
+void printInfo(const string &name, const int &age) {
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    // name = "Changed";  // This would cause compilation error
+    // age = 0;           // This would cause compilation error
+}
+
+// Function to calculate string length efficiently
+int getStringLength(const string &str) {
+    return str.length();
+}
+
+int main() {
+    string personName = "Alice";
+    int personAge = 25;
+    
+    printInfo(personName, personAge);
+    
+    cout &lt;&lt; "String length: " &lt;&lt; getStringLength(personName) &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise: Implement a Function to Swap Two Strings</h3>
+                        <p>Create a function that swaps two string variables using call by reference.</p>
+                        <div class="code-editor">
+                            <textarea id="exercise3" placeholder="Write your code here...">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// Your swap function here
+void swapStrings(string &str1, string &str2) {
+    // Write your code here
+}
+
+int main() {
+    string first = "Hello";
+    string second = "World";
+    
+    cout &lt;&lt; "Before swap: " &lt;&lt; first &lt;&lt; " " &lt;&lt; second &lt;&lt; endl;
+    
+    // Call your swap function here
+    swapStrings(first, second);
+    
+    cout &lt;&lt; "After swap: " &lt;&lt; first &lt;&lt; " " &lt;&lt; second &lt;&lt; endl;
+    
+    return 0;
+}</textarea>
+                            <button class="run-code" onclick="runExercise('exercise3')">Run Code</button>
+                            <div class="output"></div>
+                        </div>
                     </div>
                 </div>
             </section>

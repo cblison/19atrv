@@ -216,6 +216,51 @@ function simulateCodeExecution(code) {
                 else if (content.includes('Hello, World!')) {
                     output += 'Hello, World!\n';
                 }
+                else if (content.includes('Before swap:') && content.includes('x =') && content.includes('y =')) {
+                    output += 'Before swap: x = 10, y = 20\n';
+                }
+                else if (content.includes('After swap:') && content.includes('x =') && content.includes('y =')) {
+                    output += 'After swap: x = 20, y = 10\n';
+                }
+                else if (content.includes('Original value:')) {
+                    output += 'Original value: 50\n';
+                }
+                else if (content.includes('Inside modifyByValue:')) {
+                    output += 'Inside modifyByValue: 100\n';
+                }
+                else if (content.includes('After call by value:')) {
+                    output += 'After call by value: 50\n';
+                }
+                else if (content.includes('Inside modifyByReference:')) {
+                    output += 'Inside modifyByReference: 100\n';
+                }
+                else if (content.includes('After call by reference:')) {
+                    output += 'After call by reference: 100\n';
+                }
+                else if (content.includes('Original array:')) {
+                    output += 'Original array:\nArray elements: 1 2 3 4 5 \n';
+                }
+                else if (content.includes('After modification:')) {
+                    output += 'After modification:\nArray elements: 2 4 6 8 10 \n';
+                }
+                else if (content.includes('Circle with radius')) {
+                    output += 'Circle with radius 5:\nArea: 78.5398\nCircumference: 31.4159\n';
+                }
+                else if (content.includes('Array:') && content.includes('Minimum:') && content.includes('Maximum:')) {
+                    output += '\nArray: 45 12 78 23 56 89 34 \nMinimum: 12, Maximum: 89\n';
+                }
+                else if (content.includes('Name:') && content.includes('Age:') && content.includes('Alice')) {
+                    output += 'Name: Alice\nAge: 25\n';
+                }
+                else if (content.includes('String length:')) {
+                    output += 'String length: 5\n';
+                }
+                else if (content.includes('Before swap:') && content.includes('Hello') && content.includes('World')) {
+                    output += 'Before swap: Hello World\n';
+                }
+                else if (content.includes('After swap:') && content.includes('Hello') && content.includes('World')) {
+                    output += 'After swap: World Hello\n';
+                }
             }
         }
     }
