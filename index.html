@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn C++ - Interactive Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-code"></i> Learn C++</h1>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav" id="nav">
+            <ul class="nav-list">
+                <li><a href="#intro" class="nav-link active">Introduction</a></li>
+                <li><a href="#variables" class="nav-link">Variables & Data Types</a></li>
+                <li><a href="#control" class="nav-link">Control Structures</a></li>
+                <li><a href="#functions" class="nav-link">Functions</a></li>
+                <li><a href="#arrays" class="nav-link">Arrays & Strings</a></li>
+                <li><a href="#oop" class="nav-link">Object-Oriented Programming</a></li>
+                <li><a href="#practice" class="nav-link">Practice</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Introduction Section -->
+            <section id="intro" class="lesson active">
+                <h2>Welcome to C++ Programming!</h2>
+                <div class="lesson-content">
+                    <p>C++ is a powerful, general-purpose programming language that supports both procedural and object-oriented programming paradigms. It's widely used in system programming, game development, and high-performance applications.</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-lightbulb"></i> Why Learn C++?</h3>
+                        <ul>
+                            <li>High performance and efficiency</li>
+                            <li>Wide industry adoption</li>
+                            <li>Foundation for other languages</li>
+                            <li>System-level programming capabilities</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Your First C++ Program</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Variables Section -->
+            <section id="variables" class="lesson">
+                <h2>Variables & Data Types</h2>
+                <div class="lesson-content">
+                    <p>Variables are containers for storing data values. In C++, you must declare the type of data a variable will hold.</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-info-circle"></i> Basic Data Types</h3>
+                        <ul>
+                            <li><code>int</code> - Integer numbers</li>
+                            <li><code>float</code> - Floating-point numbers</li>
+                            <li><code>double</code> - Double precision floating-point</li>
+                            <li><code>char</code> - Single character</li>
+                            <li><code>bool</code> - Boolean (true/false)</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Variable Declaration and Initialization</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Variable declaration and initialization
+    int age = 25;
+    float height = 5.9;
+    char grade = 'A';
+    bool isStudent = true;
+    
+    // Display variables
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Height: " &lt;&lt; height &lt;&lt; endl;
+    cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; "Is Student: " &lt;&lt; isStudent &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Control Structures Section -->
+            <section id="control" class="lesson">
+                <h2>Control Structures</h2>
+                <div class="lesson-content">
+                    <p>Control structures allow you to control the flow of execution in your program using conditions and loops.</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-sitemap"></i> Types of Control Structures</h3>
+                        <ul>
+                            <li><strong>if-else</strong> - Conditional execution</li>
+                            <li><strong>for loop</strong> - Repeat code a specific number of times</li>
+                            <li><strong>while loop</strong> - Repeat code while condition is true</li>
+                            <li><strong>switch</strong> - Multiple choice selection</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>If-Else and Loops Example</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int number = 7;
+    
+    // If-else statement
+    if (number > 0) {
+        cout &lt;&lt; "Positive number" &lt;&lt; endl;
+    } else if (number < 0) {
+        cout &lt;&lt; "Negative number" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Zero" &lt;&lt; endl;
+    }
+    
+    // For loop
+    cout &lt;&lt; "Counting from 1 to 5: ";
+    for (int i = 1; i <= 5; i++) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // While loop
+    int count = 0;
+    cout &lt;&lt; "While loop countdown: ";
+    while (count < 3) {
+        cout &lt;&lt; (3 - count) &lt;&lt; " ";
+        count++;
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Functions Section -->
+            <section id="functions" class="lesson">
+                <h2>Functions</h2>
+                <div class="lesson-content">
+                    <p>Functions are blocks of code that perform specific tasks. They help organize code and make it reusable.</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-cogs"></i> Function Components</h3>
+                        <ul>
+                            <li><strong>Return Type</strong> - What the function returns</li>
+                            <li><strong>Function Name</strong> - Identifier for the function</li>
+                            <li><strong>Parameters</strong> - Input values (optional)</li>
+                            <li><strong>Function Body</strong> - Code that executes</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Function Declaration and Usage</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function declaration
+int add(int a, int b);
+void greet(string name);
+
+int main() {
+    // Function calls
+    int result = add(5, 3);
+    cout &lt;&lt; "Sum: " &lt;&lt; result &lt;&lt; endl;
+    
+    greet("Alice");
+    
+    return 0;
+}
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+
+void greet(string name) {
+    cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; "!" &lt;&lt; endl;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Arrays Section -->
+            <section id="arrays" class="lesson">
+                <h2>Arrays & Strings</h2>
+                <div class="lesson-content">
+                    <p>Arrays store multiple values of the same type, while strings are sequences of characters.</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-list"></i> Array and String Basics</h3>
+                        <ul>
+                            <li><strong>Arrays</strong> - Fixed-size collections of elements</li>
+                            <li><strong>Strings</strong> - Character arrays or string objects</li>
+                            <li><strong>Indexing</strong> - Access elements using index (0-based)</li>
+                            <li><strong>Size</strong> - Number of elements in the array</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Working with Arrays and Strings</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    // Array declaration and initialization
+    int numbers[5] = {10, 20, 30, 40, 50};
+    
+    cout &lt;&lt; "Array elements: ";
+    for (int i = 0; i < 5; i++) {
+        cout &lt;&lt; numbers[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    // String operations
+    string name = "C++ Programming";
+    cout &lt;&lt; "String: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Length: " &lt;&lt; name.length() &lt;&lt; endl;
+    cout &lt;&lt; "First character: " &lt;&lt; name[0] &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OOP Section -->
+            <section id="oop" class="lesson">
+                <h2>Object-Oriented Programming</h2>
+                <div class="lesson-content">
+                    <p>Object-Oriented Programming (OOP) is a programming paradigm based on objects and classes.</p>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-cube"></i> OOP Concepts</h3>
+                        <ul>
+                            <li><strong>Class</strong> - Blueprint for objects</li>
+                            <li><strong>Object</strong> - Instance of a class</li>
+                            <li><strong>Encapsulation</strong> - Data hiding</li>
+                            <li><strong>Inheritance</strong> - Code reuse</li>
+                            <li><strong>Polymorphism</strong> - Multiple forms</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Class and Object Example</h3>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int age;
+    
+public:
+    // Constructor
+    Student(string n, int a) {
+        name = n;
+        age = a;
+    }
+    
+    // Method to display information
+    void displayInfo() {
+        cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; ", Age: " &lt;&lt; age &lt;&lt; endl;
+    }
+    
+    // Getter method
+    string getName() {
+        return name;
+    }
+};
+
+int main() {
+    // Create object
+    Student student1("Alice", 20);
+    Student student2("Bob", 22);
+    
+    // Call methods
+    student1.displayInfo();
+    student2.displayInfo();
+    
+    return 0;
+}</code></pre>
+                        <button class="run-code" onclick="runCode(this)">Run Code</button>
+                        <div class="output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Practice Section -->
+            <section id="practice" class="lesson">
+                <h2>Practice Exercises</h2>
+                <div class="lesson-content">
+                    <p>Test your knowledge with these interactive exercises!</p>
+                    
+                    <div class="exercise">
+                        <h3>Exercise 1: Calculator</h3>
+                        <p>Create a simple calculator that adds two numbers.</p>
+                        <div class="code-editor">
+                            <textarea id="exercise1" placeholder="Write your code here...">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Your code here
+    
+    return 0;
+}</textarea>
+                            <button class="run-code" onclick="runExercise('exercise1')">Run Code</button>
+                            <div class="output"></div>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 2: Number Guessing Game</h3>
+                        <p>Create a simple number guessing game.</p>
+                        <div class="code-editor">
+                            <textarea id="exercise2" placeholder="Write your code here...">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Your code here
+    
+    return 0;
+}</textarea>
+                            <button class="run-code" onclick="runExercise('exercise2')">Run Code</button>
+                            <div class="output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>made for 19atrv ❤️ for learning.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
